@@ -16,16 +16,16 @@
       ];
       forAllSystems = lib.genAttrs platforms;
 
-      version = "0.7.7.1";
+      version = "0.8.2.1";
 
       linuxHashes = {
-        "x86_64-linux" = "sha256-aY9GwIDPTcskm55NluSyxkCHC6drd6BdBaNYZhrzlRE=";
-        "aarch64-linux" = "sha256-76hJ19/bHzdE1//keGF9imYkMHOy6VHpA56bxEkgwgA=";
+        "x86_64-linux" = "sha256-hljL7KlafD1TYPmA+U8HRdXKOUdsb6Lnk4XiAYfmPI8=";
+        "aarch64-linux" = "sha256-ymEQnVCAZN9SXIcVLEt6kNkkZ7USY0qBI9M1HsBkrrU=";
       };
 
       darwinHashes = {
-        "x86_64-darwin" = "sha256-LtxzeBkECRML+q+qtcTljuFoPefuZdk1PIcdDqSGl0Y=";
-        "aarch64-darwin" = "sha256-iFE2OigeG+sDfGKmuqqb6LKUyxhZ2Jcti+jLzeHMLYM=";
+        "x86_64-darwin" = "sha256-uDrsOxCo+FA/K3Ny+ycrjSClQ5gmu50K+9RC+td6yAE=";
+        "aarch64-darwin" = "sha256-Y42Fj+5KPZ2aO7XazV1CFB7liAmWSsafcXpvukJRqoM=";
       };
 
       mkHeliumLinux =
@@ -104,8 +104,6 @@
 
             mkdir -p $out/share/applications
             cp $out/opt/helium/helium.desktop $out/share/applications/
-            substituteInPlace $out/share/applications/helium.desktop \
-              --replace-fail 'chromium' 'helium'
 
             mkdir -p $out/share/pixmaps
             cp $out/opt/helium/product_logo_256.png $out/share/pixmaps/helium.png
