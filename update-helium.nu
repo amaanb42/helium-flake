@@ -1,4 +1,5 @@
-#!/usr/bin/env nu
+#!/usr/bin/env nix-shell
+#! nix-shell -i nu -p nushell
 
 def get-helium-latest [] {
     let repo = "imputnet/helium-linux"
