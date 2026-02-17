@@ -92,39 +92,14 @@ nix build
 
 ## Updating
 
-To update to a new Helium release:
+The Helium version gets automatically updated each Monday
+via a GitHub workflow.
 
-1. Check the latest releases and update the version in `flake.nix`:
-   - [Linux releases](https://github.com/imputnet/helium-linux/releases)
-   - [macOS releases](https://github.com/imputnet/helium-macos/releases)
+To manually update to the newest Helium release:
 
-   ```nix
-   version = "0.7.7.1";  # Update this
-   ```
+1. Run `nix-shell update-helium.nu`
 
-2. Fetch the new hashes for all architectures:
-
-   ```bash
-   # Linux x86_64
-   nix-prefetch-url https://github.com/imputnet/helium-linux/releases/download/VERSION/helium-VERSION-x86_64_linux.tar.xz
-   nix hash convert --hash-algo sha256 --to sri <hash-from-above>
-
-   # Linux aarch64
-   nix-prefetch-url https://github.com/imputnet/helium-linux/releases/download/VERSION/helium-VERSION-arm64_linux.tar.xz
-   nix hash convert --hash-algo sha256 --to sri <hash-from-above>
-
-   # macOS x86_64
-   nix-prefetch-url https://github.com/imputnet/helium-macos/releases/download/VERSION/helium_VERSION_x86_64-macos.dmg
-   nix hash convert --hash-algo sha256 --to sri <hash-from-above>
-
-   # macOS aarch64
-   nix-prefetch-url https://github.com/imputnet/helium-macos/releases/download/VERSION/helium_VERSION_arm64-macos.dmg
-   nix hash convert --hash-algo sha256 --to sri <hash-from-above>
-   ```
-
-3. Update the `sha256` values in `flake.nix` for all architectures in `linuxHashes` and `darwinHashes`
-
-4. Test the build:
+2. Test the build:
 
    ```bash
    # If you're on Linux
