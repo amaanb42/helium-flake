@@ -45,7 +45,7 @@ def get-helium-latest [] {
 
 let versionData = get-helium-latest
 
-print $versionData | table
+print $versionData | table --expand
 
 $versionData | to json | save helium-versions.json --force
 
