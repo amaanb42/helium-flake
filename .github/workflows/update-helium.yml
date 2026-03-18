@@ -22,7 +22,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Update helium versions
-        run: chmod +x update-helium.nu && ./update-helium.nu
+        run: nix-shell update-helium.nu
 
       - name: Check all systems
         run: nix flake check --all-systems
