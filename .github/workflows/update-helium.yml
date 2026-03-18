@@ -6,6 +6,9 @@ on:
     - cron: "0 0 * * 1"
   workflow_dispatch: # Allow manual triggering
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -19,7 +22,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Update helium versions
-        run: nix-shell update-helium.nu
+        run: chmod +x update-helium.nu && ./update-helium.nu
 
       - name: Check all systems
         run: nix flake check --all-systems
